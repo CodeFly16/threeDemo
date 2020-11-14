@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--  <link href="./css/jquery.toolbar.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">-->
+  <!-- Font Awesome v4.3.0 -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <!-- Toolbar.js v1.0.4 -->
+  <link href="https://paulkinzett.github.io/toolbar/css/jquery.toolbar.css" rel="stylesheet"/>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #toolbar {
+      position: absolute;
+    }
+
+    #out {
+      width: 500px;
+      height: 500px;
+      background-color: #1b6d85;
+    }
+  </style>
+</head>
+<body>
+
+<!--悬浮工具栏-->
+<div id="out">
+  <div id="toolbar">
+    <div data-toolbar="content-option" class="btn-toolbar">
+      <i class="fa fa-cog"></i>
+    </div>
+    <!--展示列表-->
+    <div id="toolbar-options" class="hidden">
+      <a href="#" title="组件模式"><i class="fa fa-plane"></i></a>
+      <a href="#" title="组件复位"><i class="fa fa-car"></i></a>
+      <a href="#" title="设置"><i class="fa fa-bicycle"></i></a>
+      <a href="#" title="图片保存"><i class="fa fa-camera-retro"></i></a>
+    </div>
+  </div>
+</div>
+
+
+<!--<script src="js/jquery.js"></script>
+<script src="./js/jquery.toolbar.js"></script>
+<script src="./js/bootstrap.js"></script>-->
+<!-- jQuery v1.9.1 -->
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://paulkinzett.github.io/toolbar/js/jquery.toolbar.min.js"></script>
+<script>
+
+  $('.btn-toolbar').toolbar({
+    content: '#toolbar-options',
+    position: 'bottom',
+    event: 'click',
+  });
+
+
+  //移动组件
+  $(function () {
+    // 鼠标按下时
+    $('#toolbar').mousedown(function (e) {
+      // 获取当前元素的 偏移量
+      var positionDiv = $(this).offset();
+      // 获取是否在当前事件下在当前元素上
+      var distenceX = e.pageX - positionDiv.left;
+      var distenceY = e.pageY - positionDiv.top;
+      // 移动时,out表示移动是窗口限制大小
+      $('#out').mousemove(function (e) {
+        // 获取坐标
+        var x = e.pageX - distenceX;
+        var y = e.pageY - distenceY;
+        if (x < 0) {
+          x = 0;
+        } else if (x > $('#out').width() - $('#toolbar').outerWidth(true)) { // 判断是否超出out宽度
+          x = $('#out').width() - $('#toolbar').outerWidth(true);
+        }
+        if (y < 0) {
+          y = 0;
+        } else if (y > $('#out').height() - $('#toolbar').outerHeight(true)) { // 判断是否超出out高度
+          y = $('#out').height() - $('#toolbar').outerHeight(true);
+        }
+        // 设置left值和top值
+        $('#toolbar').css({
+          'left': x + 'px',
+          'top': y + 'px'
+        });
+      });
+      // 解绑事件
+      $('#out').mouseup(function () {
+        $('#out').off('mousemove');
+      });
+    });
+  });
+</script>
+</body>
+
+</body>
+</html>

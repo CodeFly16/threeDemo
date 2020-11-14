@@ -1,0 +1,54 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    },
+    {
+      "id": 4,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    },
+    {
+      "id": 3,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    },
+    {
+      "id": 4,
+      "username": "admin",
+      "age": 18,
+      "job": 2
+    }
+  ]
+}
